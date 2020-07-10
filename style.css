@@ -7,14 +7,39 @@ ul,
 ol {
     list-style: none;
 }
-
+body{
+    overflow:hidden;
+}
+#canvas {
+    display:block;
+    position: fixed;
+    top:0;
+    left : 0;
+}
 .actions {
     position: fixed;
     top: 0px;
     left: 0px;
     padding: 20px 0 0 20px;
 }
-
+.sizes{
+    position:fixed;
+    top:60px;
+    right:22px; 
+}
+.sizes .thin{
+    height: 0;
+    width: 20px;
+    border: 2px solid black;
+}
+.sizes li{
+    margin: 10px 0;
+}
+.sizes .thick{
+    height: 0;
+    width: 20px;
+    border: 4px solid black;
+}
 .actions svg {
     width: 1.5em;
     height: 1.5em;

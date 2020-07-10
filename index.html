@@ -20,11 +20,18 @@
 <body>
     <canvas id="canvas" width=300 height=300></canvas>
     <div id="actions" class="actions">
-        <svg class="icon" id=brush aria-hidden="true">
+        <svg class="icon active" id=brush aria-hidden="true">
       <use xlink:href="#icon-pen"></use>
     </svg>
         <svg class="icon" id=eraser aria-hidden="true">
       <use xlink:href="#icon-eraser"></use>
+    </svg>
+</svg>
+<svg class="icon" id=clear aria-hidden="true">
+<use xlink:href="#icon-clear"></use>
+</svg>
+<svg class="icon" id=download aria-hidden="true">
+    <use xlink:href="#icon-save"></use>
     </svg>
         <ol class="colors">
             <li id=black class="black active"></li>
@@ -32,9 +39,13 @@
             <li id=green class="green"></li>
             <li id=blue class="blue"></li>
         </ol>
+        <ol class="sizes">
+            <li id="thin" class="thin"></li>
+            <li id="thick" class="thick"></li>
+        </ol>
     </div>
     <script src="./main.js"></script>
-    <script src="//at.alicdn.com/t/font_1924502_eqkopsx67rm.js"></script>
+    <script src="//at.alicdn.com/t/font_1924502_c9uilrzww2a.js"></script>
 </body>
 
 </html>

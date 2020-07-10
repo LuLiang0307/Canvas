@@ -1,5 +1,6 @@
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
+var lineWidth = 5;
 autoSetCanvasSize(canvas)
 listenToUser(canvas)
 
@@ -36,6 +37,12 @@ blue.onclick = function() {
     red.classList.remove('active');
     black.classList.remove('active');
 }
+thin.onclick = function(){
+    lineWidth = 5;
+}
+thick.onclick = function(){
+    lineWidth = 10;
+}
 
 /****/
 function drawCircle(x, y, radius) {
@@ -46,7 +53,7 @@ function drawCircle(x, y, radius) {
 
 function drawLine(x1, y1, x2, y2) {
     ctx.beginPath();
-    ctx.lineWidth = 10;
+    ctx.lineWidth = lineWidth;
     ctx.moveTo(x1, y1);
     ctx.lineTo(x2, y2);
     ctx.stroke()
@@ -86,7 +93,18 @@ function listenToUser(canvas) {
         eraser.classList.add('active');
         brush.classList.remove('active');
     }
-
+    clear.onclick = function(){
+        ctx.clearRect(0,0,canvas.width,canvas.height)
+    }
+    download.onclick = function(){
+        var url = canvas.toDataURL("image/png");
+        var a=document.createElement('a');
+        document.body.appendChild(a);
+        a.href=url;
+        a.download = '我的画儿';
+        a.target = '_blank';
+        a.click()
+    }
     //特性检测，检测的不是设备，而是特性
     if (document.body.ontouchstart !== undefined) {
         //触屏设备
@@ -102,7 +120,6 @@ function listenToUser(canvas) {
                     "x": x,
                     "y": y
                 };
-                drawCircle(x, y, 5);
             }
         }
         canvas.ontouchmove = function(e) {
@@ -116,7 +133,6 @@ function listenToUser(canvas) {
                         "x": x,
                         "y": y
                     }
-                    drawCircle(x, y, 5);
                     drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y);
                     lastPoint = newPoint;
                 }
@@ -139,7 +155,6 @@ function listenToUser(canvas) {
                     "x": x,
                     "y": y
                 };
-                drawCircle(x, y, 5)
             }
         }
         document.onmousemove = function(e) {
@@ -153,7 +168,6 @@ function listenToUser(canvas) {
                         "x": x,
                         "y": y
                     }
-                    drawCircle(x, y, 5)
                     drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y);
                     lastPoint = newPoint;
                 }
